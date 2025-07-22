@@ -9,7 +9,7 @@
 # license found in the license.txt file in the root directory of this source tree.
 #
 
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.20)
 
 project(SLikeNetDLL)
 
@@ -41,8 +41,13 @@ set_target_properties(SLikeNetDLL PROPERTIES
 add_definitions(-D_RETAIL)
 
 IF(WIN32 AND NOT UNIX)
-	add_definitions(-DWIN32 -D_RAKNET_DLL -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE)
-	SET( CMAKE_CXX_FLAGS "/GS- /GR-" )
+    add_definitions(-DWIN32 -D_RAKNET_DLL)
+    if(MSVC)
+	    add_definitions( -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE)
+	    SET( CMAKE_CXX_FLAGS "/GS- /GR-" )
+    ELSEIF(MINGW)
+	    SET( CMAKE_CXX_FLAGS "-fno-stack-protector -fno-rtti" )
+    ENDIF()
 ELSE(WIN32 AND NOT UNIX)
 	set_target_properties(SLikeNetDLL PROPERTIES
 		OUTPUT_NAME "slikenet"

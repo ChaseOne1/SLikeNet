@@ -9,7 +9,7 @@
 # license found in the license.txt file in the root directory of this source tree.
 #
 
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.20)
 
 # CMake policy settings
 if( POLICY CMP0037 )
@@ -47,7 +47,7 @@ ENDIF(WIN32 AND NOT UNIX)
 # set(SLIKENET_LIBRARY_LIBS OpenSSL::Crypto OpenSSL::SSL)
 
 IF (WIN32 AND NOT UNIX)
-	set(SLIKENET_LIBRARY_LIBS ${SLIKENET_LIBRARY_LIBS} ws2_32.lib)
+	set(SLIKENET_LIBRARY_LIBS ${SLIKENET_LIBRARY_LIBS} ws2_32.lib iphlpapi.lib)
 ELSE(WIN32 AND NOT UNIX)
 	set(SLIKENET_LIBRARY_LIBS ${SLIKENET_LIBRARY_LIBS} pthread)
 ENDIF(WIN32 AND NOT UNIX)

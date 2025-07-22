@@ -175,7 +175,7 @@
 #if defined(SHA1_HAS_TCHAR)
 #include <tchar.h>
 #else
-#ifdef _MSC_VER
+#ifdef _WIN32
 #include <tchar.h>
 #else
 #ifndef TCHAR

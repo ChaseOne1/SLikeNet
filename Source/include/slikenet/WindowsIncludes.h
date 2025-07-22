@@ -13,8 +13,10 @@
  *  license found in the license.txt file in the root directory of this source tree.
  */
 
+#pragma once
+
 #ifndef NOMINMAX
-	#define NOMINMAX
+    #define NOMINMAX
 #endif
 
 #if   defined (WINDOWS_STORE_RT)
@@ -25,7 +27,6 @@
 #include <windows.h>
 #include <ws2tcpip.h>
 #include <IPHlpApi.h> // used for GetAdaptersAddresses()
-#pragma comment(lib, "IPHLPAPI.lib") // used for GetAdaptersAddresses()
 
 // Must always include Winsock2.h before windows.h
 // or else:
