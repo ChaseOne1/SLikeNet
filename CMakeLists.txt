@@ -9,7 +9,7 @@
 # license found in the license.txt file in the root directory of this source tree.
 #
 
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.2)
 
 # CMake policy settings
 if( POLICY CMP0037 )
@@ -43,8 +43,8 @@ IF (WIN32 AND NOT UNIX)
 ENDIF(WIN32 AND NOT UNIX)
 
 # add package dependencies
-find_package(OpenSSL 1.0.0 REQUIRED)
-set(SLIKENET_LIBRARY_LIBS OpenSSL::Crypto OpenSSL::SSL)
+# find_package(OpenSSL 1.0.0 REQUIRED)
+# set(SLIKENET_LIBRARY_LIBS OpenSSL::Crypto OpenSSL::SSL)
 
 IF (WIN32 AND NOT UNIX)
 	set(SLIKENET_LIBRARY_LIBS ${SLIKENET_LIBRARY_LIBS} ws2_32.lib)
