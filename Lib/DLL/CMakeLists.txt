@@ -29,6 +29,7 @@ add_library(SLikeNetDLL SHARED ${ALL_CPP_SRCS} ${CRYPTO_CPP_SRCS} ${ALL_HEADER_S
 #	)
 #else()
 	include_directories(${SLIKENET_INTERNAL_INCLUDE_DIRS})
+    target_include_directories(SLikeNetDLL INTERFACE ${SLIKENET_HEADER_FILES})
 #endif()
 
 # set the version number
@@ -43,10 +44,10 @@ add_definitions(-D_RETAIL)
 IF(WIN32 AND NOT UNIX)
     add_definitions(-DWIN32 -D_RAKNET_DLL)
     if(MSVC)
-	    add_definitions( -D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE)
-	    SET( CMAKE_CXX_FLAGS "/GS- /GR-" )
+	    add_definitions(-D_CRT_NONSTDC_NO_DEPRECATE -D_CRT_SECURE_NO_DEPRECATE)
+	    SET(CMAKE_CXX_FLAGS "/GS- /GR-" )
     ELSEIF(MINGW)
-	    SET( CMAKE_CXX_FLAGS "-fno-stack-protector -fno-rtti" )
+	    SET(CMAKE_CXX_FLAGS "-fno-stack-protector -fno-rtti" )
     ENDIF()
 ELSE(WIN32 AND NOT UNIX)
 	set_target_properties(SLikeNetDLL PROPERTIES

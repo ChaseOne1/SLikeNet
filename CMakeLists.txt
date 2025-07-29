@@ -66,13 +66,13 @@ endif()
 
 # options
 IF (WIN32 AND NOT UNIX)
-	option(SLIKENET_ENABLE_SAMPLES "Generate sample projects if true."                 TRUE)
+    option(SLIKENET_ENABLE_SAMPLES "Generate sample projects if true."                 OFF)
 ELSE (WIN32 AND NOT UNIX)
 	# building samples is disabled atm by default on Unix/Mac, since the sample projects won't compile correctly
-	option(SLIKENET_ENABLE_SAMPLES "Generate sample projects if true."                 FALSE)
+    option(SLIKENET_ENABLE_SAMPLES "Generate sample projects if true."                 OFF)
 ENDIF(WIN32 AND NOT UNIX)
-option(SLIKENET_ENABLE_DLL         "Generate the DLL / shared object project if true." TRUE)
-option(SLIKENET_ENABLE_STATIC      "Generate the static library project if true."      TRUE)
+option(SLIKENET_ENABLE_DLL         "Generate the DLL / shared object project if true." ON)
+option(SLIKENET_ENABLE_STATIC      "Generate the static library project if true."      ON)
 
 set(SLIKENET_HEADER_FILES ${SLikeNet_SOURCE_DIR}/Source)
 
